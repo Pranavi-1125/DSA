@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//TC - O(n1+n2) SC - O(1)
 public class intersection {
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter size1: ");
         int n1 = sc.nextInt();
@@ -20,10 +20,10 @@ public class intersection {
         }
 
         int i = 0, j = 0;
-        ArrayList<Integer> arr = new ArrayList<>();
+         ArrayList<Integer> arr = new ArrayList<>();
 
         while (i < n1 && j < n2) {
-            if (a1[i] == a2[j]) {
+            if(a1[i] == a2[j]) {
                 if (arr.size() == 0 || arr.get(arr.size() - 1) != a1[i]) {
                     arr.add(a1[i]);
                 }
@@ -33,12 +33,12 @@ public class intersection {
                 i++;
             } else {
                 j++;
-            }
-        }
-        System.out.println("Intersection of the two arrays is: ");
+            }  
+        } 
+         System.out.println("Intersection of the two arrays is: ");
         for (int num : arr) {
             System.out.print(num + " ");
-        }
+        } 
         sc.close();
-    }
+}
 }
