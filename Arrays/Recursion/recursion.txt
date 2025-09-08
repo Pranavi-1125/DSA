@@ -1,0 +1,7 @@
+Recursion :
+
+when a function calls it self then it is called a recursion.
+
+It is stored in a stack manner.
+
+If a recursion is done without a condition then Stackoverflow or Segmentation fault error occurs.
