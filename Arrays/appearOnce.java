@@ -1,80 +1,77 @@
 
 //My approach
-//TC - O(n)
-//SC - O(1)
-// import java.util.Scanner;
-// public class missing {
-//     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         System.out.println("Enter size: ");
-//         int n = sc.nextInt();
-//         System.out.println("Enter elements: ");
-//         int[] a = new int[n];
-//         for (int i = 0; i < n; i++) {
-//             a[i] = sc.nextInt();
-//         }
-//         System.out.println("Enter Number: ");
-//         int N = sc.nextInt();
-//         int t = 1;
-//         int index = -1;
-//         if (N <= n)
-//             for (int i = 0; i < n; i++) {
-//                 if (t == a[i])
-//                     t++;
-//                 else {
-//                     index = t;
-//                 }
-//             }
-//         if (index == -1) {
-//             System.out.println("The given number is greater than the given array size");
-//         } else
-//             System.out.println(index + " is missing");
+// But there is a problem
+//1. It will not work for negative numbers
+//2. It will not work if the number is greater than or equal to n
+//3. What if array size is just 4 and the elements are 119, 23, 45, 67
 
-//         sc.close();
-//     }
-// }
-
-//Brute force approach
-//TC - O(n^2)
-//SC - O(1)
-
-// import java.util.Scanner;
-
-// public class missing {
-//     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         System.out.println("Enter size: ");
-//         int n = sc.nextInt();
-//         System.out.println("Enter elements: ");
-//         int[] a = new int[n];
-//         for (int i = 0; i < n; i++) {
-//             a[i] = sc.nextInt();
-//         }
-//         System.out.println("Enter Number: ");
-//         int N = sc.nextInt();
-//         for (int i = 1; i < N; i++) {
-//             int flag = 0;
-//             for (int j = 0; j < n; j++) {
-//                 if (a[j] == i) {
-//                     flag = 1;
-//                     break;
-//                 }
-//             }
-//             if (flag == 0)
-//                 System.out.println(i + " is missing");
-
-//         }
-
-//         sc.close();
-//     }
-// }
-
-//Optimal 
+//Optimal
 //TC - O(n) + O(n) = O(n)
 //SC - O(n)
+// import java.util.Scanner;
+
+// public class appearOnce {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         System.out.println("Enter size: ");
+//         int n = sc.nextInt();
+//         System.out.println("Enter elements: ");
+//         int[] a = new int[n];
+//         for (int i = 0; i < n; i++) {
+//             a[i] = sc.nextInt();
+//         }
+//         int[] h = new int[n];
+
+//         for (int i = 0; i < n; i++) {
+//             h[a[i]]++;
+//         }
+
+//         for (int i = 0; i < n; i++) {
+//             if (h[a[i]] == 1) {
+//                 System.out.println("Element appearing once: " + a[i]);
+//             }
+//         }
+
+//         sc.close();
+//     }
+
+// }
+
+//Brute force
+//Tc - O(n^2)
+//SC - O(1)
+// import java.util.Scanner;
+
+// public class appearOnce {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         System.out.println("Enter size: ");
+//         int n = sc.nextInt();
+//         System.out.println("Enter elements: ");
+//         int[] a = new int[n];
+//         for (int i = 0; i < n; i++) {
+//             a[i] = sc.nextInt();
+//         }
+//         int count = 0;
+//         for (int i = 0; i < n; i++) {
+//             int num = a[i];
+//             for (int j = 0; j < n; j++) {
+//                 if (a[j] == num) {
+//                     count++;
+//                 }
+//             }
+//             if (count == 1)
+//                 System.out.println("Element appearing once: " + num);
+//             count = 0;
+//         }
+//         sc.close();
+
+//     }
+// }
+
 import java.util.Scanner;
 
-public class missing {
+public class appearOnce {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter size: ");
@@ -84,19 +81,12 @@ public class missing {
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
-        System.out.println("Enter Number: ");
-        int N = sc.nextInt();
-        int[] h = new int[N + 1];
+        int xor = 0;
         for (int i = 0; i < n; i++) {
-            h[a[i]] = 1;
+            xor = xor ^ a[i];
         }
 
-        for (int i = 1; i < N; i++) {
-            if (h[i] == 0) {
-                System.out.println(i + " is missing");
-            }
-        }
-
+        System.out.println("Element appearing once: " + xor);
         sc.close();
     }
 }
