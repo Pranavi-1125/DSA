@@ -1,3 +1,5 @@
+// Print the number which appears only once in the array where every other number appears twice
+
 
 //My approach
 // But there is a problem
@@ -69,6 +71,12 @@
 //     }
 // }
 
+
+
+//Optimal solution
+
+// TC = O(n)
+// SC = O(1)
 import java.util.Scanner;
 
 public class appearOnce {
